@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище BDLapyshokModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "BDLapyshok.dbo.InformatiaOProductii" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="InformatiaOProductii">
+          <Key>
+            <PropertyRef Name="Naimenovanie" />
+            <PropertyRef Name="TipMateriala" />
+            <PropertyRef Name="KolvoVYpokovke" />
+            <PropertyRef Name="EdinIzmerenia" />
+            <PropertyRef Name="KolvoNaSklade" />
+            <PropertyRef Name="MinOstatok" />
+            <PropertyRef Name="Stoimost" />
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naimenovanie" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="TipMateriala" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="KolvoVYpokovke" Type="int" Nullable="false" />
+          <Property Name="EdinIzmerenia" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="KolvoNaSklade" Type="int" Nullable="false" />
+          <Property Name="MinOstatok" Type="int" Nullable="false" />
+          <Property Name="Stoimost" Type="money" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "BDLapyshok.dbo.Product" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="NaimenovanieProductii" />
+            <PropertyRef Name="Artikul" />
+            <PropertyRef Name="MinStoimostdliaAgenta" />
+            <PropertyRef Name="TipProductii" />
+            <PropertyRef Name="KolvoChelovekDliaProizvodstva" />
+            <PropertyRef Name="NomerDliaProizvodstva" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NaimenovanieProductii" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Artikul" Type="int" Nullable="false" />
+          <Property Name="MinStoimostdliaAgenta" Type="money" Nullable="false" />
+          <Property Name="Izobragenie" Type="image" />
+          <Property Name="TipProductii" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="KolvoChelovekDliaProizvodstva" Type="int" Nullable="false" />
+          <Property Name="NomerDliaProizvodstva" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "BDLapyshok.dbo.ProductMaterial" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ProductMaterial">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Product" />
+            <PropertyRef Name="NaimenovanieMateriala" />
+            <PropertyRef Name="NKolvoManeriala" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NaimenovanieMateriala" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="NKolvoManeriala" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Хранилище BDLapyshokModelContainer">
+          <EntitySet Name="InformatiaOProductii" EntityType="Self.InformatiaOProductii" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [InformatiaOProductii].[id] AS [id], 
+    [InformatiaOProductii].[Naimenovanie] AS [Naimenovanie], 
+    [InformatiaOProductii].[TipMateriala] AS [TipMateriala], 
+    [InformatiaOProductii].[KolvoVYpokovke] AS [KolvoVYpokovke], 
+    [InformatiaOProductii].[EdinIzmerenia] AS [EdinIzmerenia], 
+    [InformatiaOProductii].[KolvoNaSklade] AS [KolvoNaSklade], 
+    [InformatiaOProductii].[MinOstatok] AS [MinOstatok], 
+    [InformatiaOProductii].[Stoimost] AS [Stoimost]
+    FROM [dbo].[InformatiaOProductii] AS [InformatiaOProductii]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Product" EntityType="Self.Product" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Product].[id] AS [id], 
+    [Product].[NaimenovanieProductii] AS [NaimenovanieProductii], 
+    [Product].[Artikul] AS [Artikul], 
+    [Product].[MinStoimostdliaAgenta] AS [MinStoimostdliaAgenta], 
+    [Product].[Izobragenie] AS [Izobragenie], 
+    [Product].[TipProductii] AS [TipProductii], 
+    [Product].[KolvoChelovekDliaProizvodstva] AS [KolvoChelovekDliaProizvodstva], 
+    [Product].[NomerDliaProizvodstva] AS [NomerDliaProizvodstva]
+    FROM [dbo].[Product] AS [Product]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProductMaterial" EntityType="Self.ProductMaterial" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ProductMaterial].[id] AS [id], 
+    [ProductMaterial].[Product] AS [Product], 
+    [ProductMaterial].[NaimenovanieMateriala] AS [NaimenovanieMateriala], 
+    [ProductMaterial].[NKolvoManeriala] AS [NKolvoManeriala]
+    FROM [dbo].[ProductMaterial] AS [ProductMaterial]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BDLapyshokModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="InformatiaOProductii">
+          <Key>
+            <PropertyRef Name="Naimenovanie" />
+            <PropertyRef Name="TipMateriala" />
+            <PropertyRef Name="KolvoVYpokovke" />
+            <PropertyRef Name="EdinIzmerenia" />
+            <PropertyRef Name="KolvoNaSklade" />
+            <PropertyRef Name="MinOstatok" />
+            <PropertyRef Name="Stoimost" />
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naimenovanie" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TipMateriala" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KolvoVYpokovke" Type="Int32" Nullable="false" />
+          <Property Name="EdinIzmerenia" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KolvoNaSklade" Type="Int32" Nullable="false" />
+          <Property Name="MinOstatok" Type="Int32" Nullable="false" />
+          <Property Name="Stoimost" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="NaimenovanieProductii" />
+            <PropertyRef Name="Artikul" />
+            <PropertyRef Name="MinStoimostdliaAgenta" />
+            <PropertyRef Name="TipProductii" />
+            <PropertyRef Name="KolvoChelovekDliaProizvodstva" />
+            <PropertyRef Name="NomerDliaProizvodstva" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NaimenovanieProductii" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Artikul" Type="Int32" Nullable="false" />
+          <Property Name="MinStoimostdliaAgenta" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Izobragenie" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="TipProductii" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KolvoChelovekDliaProizvodstva" Type="Int32" Nullable="false" />
+          <Property Name="NomerDliaProizvodstva" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductMaterial">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Product" />
+            <PropertyRef Name="NaimenovanieMateriala" />
+            <PropertyRef Name="NKolvoManeriala" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NaimenovanieMateriala" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NKolvoManeriala" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="BDLapyshokEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="InformatiaOProductii" EntityType="Self.InformatiaOProductii" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="ProductMaterial" EntityType="Self.ProductMaterial" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище BDLapyshokModelContainer" CdmEntityContainer="BDLapyshokEntities">
+          <EntitySetMapping Name="InformatiaOProductii">
+            <EntityTypeMapping TypeName="BDLapyshokModel.InformatiaOProductii">
+              <MappingFragment StoreEntitySet="InformatiaOProductii">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Naimenovanie" ColumnName="Naimenovanie" />
+                <ScalarProperty Name="TipMateriala" ColumnName="TipMateriala" />
+                <ScalarProperty Name="KolvoVYpokovke" ColumnName="KolvoVYpokovke" />
+                <ScalarProperty Name="EdinIzmerenia" ColumnName="EdinIzmerenia" />
+                <ScalarProperty Name="KolvoNaSklade" ColumnName="KolvoNaSklade" />
+                <ScalarProperty Name="MinOstatok" ColumnName="MinOstatok" />
+                <ScalarProperty Name="Stoimost" ColumnName="Stoimost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="BDLapyshokModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="NaimenovanieProductii" ColumnName="NaimenovanieProductii" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="MinStoimostdliaAgenta" ColumnName="MinStoimostdliaAgenta" />
+                <ScalarProperty Name="Izobragenie" ColumnName="Izobragenie" />
+                <ScalarProperty Name="TipProductii" ColumnName="TipProductii" />
+                <ScalarProperty Name="KolvoChelovekDliaProizvodstva" ColumnName="KolvoChelovekDliaProizvodstva" />
+                <ScalarProperty Name="NomerDliaProizvodstva" ColumnName="NomerDliaProizvodstva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductMaterial">
+            <EntityTypeMapping TypeName="BDLapyshokModel.ProductMaterial">
+              <MappingFragment StoreEntitySet="ProductMaterial">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="NaimenovanieMateriala" ColumnName="NaimenovanieMateriala" />
+                <ScalarProperty Name="NKolvoManeriala" ColumnName="NKolvoManeriala" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
